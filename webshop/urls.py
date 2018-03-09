@@ -15,17 +15,19 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from tastypie.api import Api
 from api.resources import CustomerResource, ProductResource, OrderResource, OrderDetailResource
+import api.views as views
 
-customer_resource = CustomerResource()
-product_resource = ProductResource()
-order_resource = OrderResource()
-order_detail_resource = OrderDetailResource()
+v1_api = Api(api_name='v1')
+v1_api.register(CustomerResource())
+v1_api.register(ProductResource())
+v1_api.register(OrderResource())
+v1_api.register(OrderDetailResource())
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^api/', include(customer_resource.urls)),
-    url(r'^api/', include(product_resource.urls)),
-    url(r'^api/', include(order_resource.urls)),
-    url(r'^api/', include(order_detail_resource.urls))
+    # url(r'^api/', include(customer_resource.urls)),
+    url(r'^api/', include(v1_api.urls)),
+    url(r'^api/v1/product/update', views.update_cart)
 ]
