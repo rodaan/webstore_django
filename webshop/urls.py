@@ -34,5 +34,6 @@ urlpatterns = [
     url(r'^api/v1/customer/(?P<customer_id>\w[\w/-]*)/order/update', views.update_product),
     url(r'^api/v1/customer/(?P<customer_id>\w[\w/-]*)/order_history', views.order_history),
     url(r'^api/v1/customer/(?P<customer_id>\w[\w/-]*)/order/(?P<order_id>\w[\w/-]*)/details', views.order_details),
-    url(r'^api/v1/customer/(?P<customer_id>\w[\w/-]*)/order/(?P<order_id>\w[\w/-]*)/checkout', views.checkout)
+    url(r'^api/v1/customer/(?P<customer_id>\w[\w/-]*)/order/(?P<order_id>\w[\w/-]*)/checkout', views.checkout),
+    url(r'^api/v1/customer/(?P<customer_id>\w[\w/-]*)/order/cart', views.current_cart)
 ]
